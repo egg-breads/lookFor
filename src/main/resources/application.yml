@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: LookFor
+  main:
+    banner-mode: off
+  # [??] MCP ?? ?? ??
+  ai:
+    mcp:
+      server:
+        transport: sse  # stdio ?? sse ?? (? ?? ??)
+        sse:
+          path: /mcp    # ?????? ??? ????? ??
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
