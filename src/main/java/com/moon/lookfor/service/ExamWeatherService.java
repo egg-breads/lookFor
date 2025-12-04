@@ -10,5 +10,5 @@ public interface ExamWeatherService {
 
      String getWeatherForecastByLocation(double latitude, double longitude);
 
-     String getAlerts(String state);
+     String getAlerts(String state) throws Exception;
 }

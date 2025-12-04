@@ -9,21 +9,28 @@ import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
+import org.springframework.web.client.RestClient;
+import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.servlet.function.ServerResponse;
 
 import java.util.function.Function;
 
 @Configuration
 public class MCPConfig {
-    // ✅ [추가] 대신 사용자님은 "어떤 기능(Tool)"을 제공할지만 등록하면 됩니다.
-    // 예시: 날씨 정보 조회 툴
-//    @Bean
-//    @Description("Get weather alerts for a US state")
-//    public Function<String, String> weatherFunction() {
-//        return state -> "Alerts for " + state + ": Sunny"; // 실제 로직으로 대체
-//    }
 
+    @Bean
+    public RestClient restClient() {
+        return RestClient.builder()
+                .baseUrl("https://api.weather.gov")
+                .defaultHeader("Accept", "application/geo+json")
+                .defaultHeader("User-Agent", "WeatherApiClient/1.0 (your@email.com)")
+                .build();
+    }
+
+    // 1. 도구 등록 (예제 방식)
     @Bean
     public ToolCallbackProvider weatherTools(ExamWeatherService weatherService) {
         return MethodToolCallbackProvider.builder().toolObjects(weatherService).build();
     }
+
 }

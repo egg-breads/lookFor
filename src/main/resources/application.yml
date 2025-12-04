@@ -1,16 +1,22 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: LookFor
   main:
     banner-mode: off
-  # [??] MCP ?? ?? ??
+
+  # 공식 문서 기반 설정
   ai:
     mcp:
       server:
-        transport: sse  # stdio ?? sse ?? (? ?? ??)
-        sse:
-          path: /mcp    # ?????? ??? ????? ??
-
-logging:
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+        stdio: false
+        enabled: true
+        sse-message-endpoint: /mcp/message
+        name: mcp-look-for
+        type: sync
+        version: 0.0.1
+        sse-endpoint: /sse
+#        streamable-http:
+#          mcp-endpoint: /mcp
