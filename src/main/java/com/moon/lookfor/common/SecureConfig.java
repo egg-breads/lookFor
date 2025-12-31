@@ -1,4 +1,4 @@
-package com.moon.lookfor.utils;
+package com.moon.lookfor.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -20,3 +20,9 @@ spring:
         sse-endpoint: /sse
 #        streamable-http:
 #          mcp-endpoint: /mcp
+
+gov:
+  share:
+    api:
+      host: "https://www.eshare.go.kr"
+      key: "f1b4c71d4f773ba6bff8e6079e0f956b"
