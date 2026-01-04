@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AreaStoreServiceImp {
 
-    @Value("${public-key}")
-    private String serviceKey;
+//    @Value("${public-key}")
+//    private String serviceKey;
     /**
      * serviceKey
      * -

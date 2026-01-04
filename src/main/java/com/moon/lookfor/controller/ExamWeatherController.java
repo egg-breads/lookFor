@@ -1,19 +1,18 @@
 package com.moon.lookfor.controller;
 
-import com.moon.lookfor.service.ExamWeatherService;
+import com.moon.lookfor.service.ParkingZoneService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.function.ServerRequest;
-import org.springframework.web.servlet.function.ServerResponse;
 
-@Controller("/")
+import java.util.Map;
+
+@RestController("/")
 @RequiredArgsConstructor
 public class ExamWeatherController {
 
-
+    private final ParkingZoneService parkingZoneService;
 //    private final RouterFunction<ServerResponse> mcpRouterFunction;
 
     @GetMapping("loc")
@@ -25,11 +24,11 @@ public class ExamWeatherController {
         return "ok";
     }
 
-//    @GetMapping("/area")
-//    public String getArea() {
-//
-//        return examWeatherService.getAlerts("NY");
-//
-//    }
+    @GetMapping("parking")
+    public Map getParking() {
+        Map result = parkingZoneService.findParkingZoneByCityName("테스트");
+        return result;
+
+    }
 
 }
